@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<queue-entries>
+
+  <queue>
+    <name>postmention</name>
+    <rate>1/s</rate>
+    <max-concurrent-requests>1</max-concurrent-requests>
+    <retry-parameters>
+      <min-backoff-seconds>100</min-backoff-seconds>
+      <max-backoff-seconds>200</max-backoff-seconds>
+      <task-age-limit>15m</task-age-limit>
+    </retry-parameters>
+  </queue>
+
+</queue-entries>

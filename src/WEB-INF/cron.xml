@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cronentries>
+  <cron>
+    <url>/cron/cleanup</url>
+    <description>Delete logs older than 48 hours</description>
+    <schedule>every day 01:30</schedule>
+    <timezone>US/Pacific</timezone>
+  </cron>
+</cronentries>

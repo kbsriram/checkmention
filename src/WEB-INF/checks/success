@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Congratulations!</title>
+</head>
+<body>
+<div class="h-entry h-as-note">
+<p>This test mentions
+<a class="u-in-reply-to h-cite" href=
+"%%target"
+>this page</a>
+and is a
+<span class="p-author h-card">
+<img class="u-photo" src="/static/img/check.png" alt="Good test"/>
+<a class="p-name u-url" href="/">Checkmention</a></span>
+</p>
+
+<p class="p-name e-content">
+Congratulations! You've successfully handled a webmentioned note.
+</p>
+
+<p>This note was created on
+<time class="dt-published" datetime=
+"%%time"
+>
+%%nice_time
+</time>
+</p>
+</div>
+</body>
+</html>

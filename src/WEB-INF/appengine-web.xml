@@ -1,0 +1,18 @@
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application>checkmention</application>
+  <version>1</version>
+  <threadsafe>true</threadsafe>
+  <sessions-enabled>true</sessions-enabled>
+  <static-files>
+    <include path="/static/**" >
+      <http-header name="X-Frame-Options" value="deny"/>
+      <http-header name="Frame-Options" value="deny"/>
+      <http-header name="X-XSS-Protection" value="1; mode=block"/>
+    </include>
+    <include path="/**.html" >
+      <http-header name="X-Frame-Options" value="deny"/>
+      <http-header name="Frame-Options" value="deny"/>
+      <http-header name="X-XSS-Protection" value="1; mode=block"/>
+    </include>
+  </static-files>
+</appengine-web-app>

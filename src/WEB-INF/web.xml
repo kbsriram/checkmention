@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app 
+   xmlns="http://java.sun.com/xml/ns/javaee" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+   version="2.5"> 
+  <display-name>Checkmention</display-name>
+
+  <security-constraint>
+    <web-resource-collection>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+
+  <security-constraint>
+    <web-resource-collection>
+      <url-pattern>/tasks/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <servlet>
+    <servlet-name>auth</servlet-name>
+    <servlet-class>com.kbsriram.checkmention.servlet.CAuthServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>job</servlet-name>
+    <servlet-class>com.kbsriram.checkmention.servlet.CJobServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>content</servlet-name>
+    <servlet-class>com.kbsriram.checkmention.servlet.CContentServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>postmention</servlet-name>
+    <servlet-class>com.kbsriram.checkmention.servlet.CPostMentionTaskServlet</servlet-class>
+  </servlet>
+
+
+  <servlet>
+    <servlet-name>cleanup</servlet-name>
+    <servlet-class>com.kbsriram.checkmention.servlet.CCleanupTaskServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>showlog</servlet-name>
+    <servlet-class>com.kbsriram.checkmention.servlet.CShowLogServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>showlog</servlet-name>
+    <url-pattern>/log/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>cleanup</servlet-name>
+    <url-pattern>/cron/cleanup</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>postmention</servlet-name>
+    <url-pattern>/tasks/postmention</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet-mapping>
+    <servlet-name>job</servlet-name>
+    <url-pattern>/job</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>content</servlet-name>
+    <url-pattern>/content/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>auth</servlet-name>
+    <url-pattern>/auth/*</url-pattern>
+  </servlet-mapping>
+
+</web-app>
