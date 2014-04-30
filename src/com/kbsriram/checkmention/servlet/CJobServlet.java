@@ -55,10 +55,11 @@ public final class CJobServlet extends AAuthenticatedServlet
         /*
          * debugging.
          */
-        // if (!uid.equals("http://kbsriram.com")) {
-        if (!candidate.toString().startsWith(uid)) {
-            showForm(req, resp, "URLs must start with "+uid);
-            return;
+        if (!uid.equals("http://kbsriram.com")) {
+            if (!candidate.toString().startsWith(uid)) {
+                showForm(req, resp, "URLs must start with "+uid);
+                return;
+            }
         }
 
         CJob job = CJob.store

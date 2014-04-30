@@ -81,11 +81,11 @@ public final class CContentServlet extends HttpServlet
             resp.setContentType("text/html");
             String line;
             while ((line = br.readLine()) != null) {
-                if (line.equals("\"%%target\"")) {
-                    line = "\""+url+"\"";
+                if (line.equals("href=\"%%target\">")) {
+                    line = "href=\""+url+"\">";
                 }
-                else if (line.equals("\"%%time\"")) {
-                    line = "\""+tstr+"\"";
+                else if (line.equals("datetime=\"%%time\">")) {
+                    line = "datetime=\""+tstr+"\">";
                 }
                 else if (line.equals("%%nice_time")) {
                     line = nice;

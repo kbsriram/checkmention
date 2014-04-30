@@ -7,9 +7,9 @@
 <body>
 <div class="h-entry h-as-note">
 <p>This test mentions
-<a class="u-in-reply-to h-cite" href=
-"%%target"
->this page</a>
+<a class="u-in-reply-to h-cite"
+href="%%target">
+this page</a>
 and is a
 <span class="p-author h-card">
 <img class="u-photo" src="/static/img/check.png" alt="Good test"/>
@@ -21,9 +21,8 @@ Congratulations! You've successfully handled a webmentioned note.
 </p>
 
 <p>This note was created on
-<time class="dt-published" datetime=
-"%%time"
->
+<time class="dt-published"
+datetime="%%time">
 %%nice_time
 </time>
 </p>
