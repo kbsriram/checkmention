@@ -12,13 +12,15 @@
       This site lets you test your <a
       href="https://indiewebcamp.com/webmention">webmention</a>
       implementation on your indieweb site, and whether it robustly
-      detects certain types of spam and XSS attacks.
+      detects certain types of XSS attacks.
     </p>
     <p>
       <a href="/job">Indieauth with your url</a> and choose a page
-      on your site. I will send it a set of webmentions, and you can
-      see how they are processed.
+      on your site. I will send it one good webmention, and others
+      that try to embed some XSS in it. You can then check back on
+      your page to see how it handles them.
     </p>
+
     <small>Here's the <a href="https://github.com/kbsriram/checkmention">source
     on github</a>.
     </small>

@@ -74,7 +74,7 @@ public final class CPostMentionTaskServlet extends HttpServlet
         }
 
         // Just do the success servlet for now.
-        String[] checks = { "success", "xss" };
+        String[] checks = { "success", "hcardxss", "xss" };
 
         for (int i=0; i<checks.length; i++) {
             postMention
