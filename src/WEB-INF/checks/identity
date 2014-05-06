@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<title>Spoofing identity</title>
+</head>
+<body>
+<div class="h-entry h-as-note">
+<p>This test mentions
+<a class="u-in-reply-to h-cite"
+href="%%target">
+this page</a>
+and is not really from
+<span class="p-author h-card">
+<img class="u-photo" src="/static/img/ive.png" alt="Jonathan Ive"/>
+<a class="p-name u-url" rel="me" href="https://www.apple.com/pr/bios/jonathan-ive.html">Jonathan Ive</a></span>
+</p>
+
+<p class="p-name e-content">
+I love the way your site looks, though I'm not really <a href="https://checkmention.appspot.com" rel="me"><em>the</em> Jony Ive</a>. How easy is it for someone to discover the real author of this note? Please also check the links don't have a <code>rel="me"</code> attribute on them, or someone could indieauth as you.
+</p>
+
+<p>This note was created on
+<time class="dt-published"
+datetime="%%time">
+%%nice_time
+</time>
+</p>
+</div>
+</body>
+</html>

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
@@ -74,7 +75,7 @@ public final class CPostMentionTaskServlet extends HttpServlet
         }
 
         // Just do the success servlet for now.
-        String[] checks = { "success", "hcardxss", "xss" };
+        String[] checks = { "success", "hcardxss", "xss", "identity" };
 
         for (int i=0; i<checks.length; i++) {
             postMention
@@ -103,19 +104,35 @@ public final class CPostMentionTaskServlet extends HttpServlet
             con.setConnectTimeout(30*1000);
             bin = new BufferedInputStream(con.getInputStream());
             Document doc = Jsoup.parse(bin, "utf-8", job.getURL());
-            Element el = doc.select("html>head>link[rel*=webmention]").first();
-            if (el == null) {
+
+            relfind:
+            for (Element el:
+                     doc.select("link[rel*=webmention],a[rel*=webmention]")) {
+                String href = CUtils.nullIfEmpty(el.attr("href"));
+                if (href == null) { continue; }
+                String relS = CUtils.nullIfEmpty(el.attr("rel"));
+                if (relS == null) { continue; } // unexpected, but still...
+                String[] rel = relS.split("\\s+");
+                for (int i=0; i<rel.length; i++) {
+                    if ("webmention".equals(rel[i]) ||
+                        "http://webmention.org/".equals(rel[i])) {
+                        try {
+                            ret = new URL(url, href);
+                            break relfind;
+                        }
+                        catch (MalformedURLException mfe) {
+                            addLog(log, "WARN: "+href+" in an invalid url");
+                            // keep going, just in case.
+                        }
+                    }
+                }
+            }
+
+            if (ret == null) {
                 addLog(log, "ERROR: Woops! Could not find a webmention");
             }
             else {
-                String href = CUtils.nullIfEmpty(el.attr("href"));
-                if (href == null) {
-                    addLog(log, "ERROR: Missing href in webmention: "+el);
-                }
-                else {
-                    ret = new URL(url, href);
-                    addLog(log, "Webmention-url is "+ret);
-                }
+                addLog(log, "Webmention-url is "+ret);
             }
         }
         catch (IOException ioe) {
